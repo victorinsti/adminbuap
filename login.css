@@ -1,0 +1,101 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+.navbar{
+    background:#003B7A;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+}
+
+.logo{
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.menu{
+    display:flex;
+    gap:20px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.login-container{
+    min-height:calc(100vh - 80px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+body{
+    font-family:Segoe UI, sans-serif;
+    background:linear-gradient(135deg,#003B7A,#0055B8);
+    min-height:100vh;
+}
+
+.login-card{
+    background:white;
+    width:400px;
+    max-width:90%;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+.login-card h1{
+    text-align:center;
+    color:#003B7A;
+    margin-bottom:10px;
+}
+
+.login-card p{
+    text-align:center;
+    margin-bottom:30px;
+    color:#666;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    border:none;
+    background:#003B7A;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#002b58;
+}
+
+#mensaje{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Simulador Matemáticas | ADMIN BUAP</title>
+
+<link rel="stylesheet" href="simulador.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+
+<div class="logo">
+    ADMIN BUAP
+</div>
+
+<a href="dashboard.html">
+    Volver
+</a>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+    <div class="materia">
+        Matemáticas
+    </div>
+
+    <div class="contador">
+        Pregunta 1 de 50
+    </div>
+
+    <h2>
+        ¿Cuánto es 15 × 8?
+    </h2>
+
+    <div class="opcion">
+        <input type="radio" name="respuesta" value="100">
+        100
+    </div>
+
+    <div class="opcion">
+        <input type="radio" name="respuesta" value="120">
+        120
+    </div>
+
+    <div class="opcion">
+        <input type="radio" name="respuesta" value="140">
+        140
+    </div>
+
+    <div class="opcion">
+        <input type="radio" name="respuesta" value="150">
+        150
+    </div>
+
+    <button onclick="evaluar()">
+        Responder
+    </button>
+
+    <p id="resultado"></p>
+
+</div>
+
+</div>
+
+<script>
+
+function evaluar(){
+
+let seleccion =
+document.querySelector(
+'input[name="respuesta"]:checked'
+);
+
+if(!seleccion){
+
+alert("Selecciona una opción");
+
+return;
+
+}
+
+if(seleccion.value=="120"){
+
+document.getElementById(
+"resultado"
+).innerHTML=
+"✅ Correcto";
+
+}else{
+
+document.getElementById(
+"resultado"
+).innerHTML=
+"❌ Incorrecto";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
