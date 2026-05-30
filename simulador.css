@@ -1,234 +1,272 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-font-size:16px;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-font-family:'Segoe UI',sans-serif;
-background:#f4f7fb;
-min-height:100vh;
-overflow-x:hidden;
+    font-family:'Segoe UI',sans-serif;
+    background:#f4f7fb;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ==========================
+   NAVBAR
+========================== */
 
 .navbar{
-background:#003B7A;
-color:white;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 25px;
-box-shadow:0 3px 15px rgba(0,0,0,.15);
-flex-wrap:wrap;
-gap:10px;
+    background:#003B7A;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+    gap:15px;
 }
 
 .logo{
-font-size:1.4rem;
-font-weight:700;
+    font-size:24px;
+    font-weight:700;
 }
 
 .navbar a{
-color:white;
-text-decoration:none;
-padding:10px 15px;
-border-radius:10px;
-background:rgba(255,255,255,.15);
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    background:rgba(255,255,255,.15);
+    padding:10px 18px;
+    border-radius:10px;
+    transition:.3s;
 }
 
-/* CONTENEDOR */
+.navbar a:hover{
+    background:rgba(255,255,255,.25);
+}
+
+/* ==========================
+   CONTENEDOR
+========================== */
 
 .container{
-width:min(95%,900px);
-margin:auto;
-padding:20px 0;
+    width:90%;
+    max-width:900px;
+    margin:50px auto;
 }
 
-/* CARD */
+/* ==========================
+   CARD PRINCIPAL
+========================== */
 
 .card{
-background:white;
-border-radius:20px;
-padding:clamp(20px,4vw,40px);
-box-shadow:0 15px 35px rgba(0,0,0,.08);
+    background:white;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
+
+/* ==========================
+   MATERIA
+========================== */
 
 .materia{
-display:inline-block;
-background:#D4AF37;
-color:white;
-padding:8px 18px;
-border-radius:50px;
-margin-bottom:15px;
-font-size:.9rem;
+    display:inline-block;
+    background:#D4AF37;
+    color:white;
+    padding:8px 18px;
+    border-radius:50px;
+    margin-bottom:20px;
+    font-weight:600;
 }
+
+/* ==========================
+   CONTADOR
+========================== */
 
 .contador{
-margin-bottom:20px;
-color:#666;
-font-weight:600;
+    margin-bottom:25px;
+    color:#666;
+    font-weight:600;
 }
+
+/* ==========================
+   TITULO PREGUNTA
+========================== */
 
 .card h2{
-color:#003B7A;
-margin-bottom:25px;
-line-height:1.5;
-font-size:clamp(1.2rem,4vw,2rem);
+    color:#003B7A;
+    margin-bottom:30px;
+    line-height:1.4;
+    font-size:clamp(22px,4vw,34px);
 }
 
-/* OPCIONES */
+/* ==========================
+   OPCIONES
+========================== */
 
 .opcion{
-background:#f8f9fc;
-border:2px solid transparent;
-border-radius:15px;
-padding:15px;
-margin-bottom:15px;
-transition:.3s;
-word-break:break-word;
+    background:#f8f9fc;
+    border:2px solid transparent;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.opcion:hover
+.opcion:hover{
+    border-color:#003B7A;
+    transform:translateY(-2px);
+}
 
 .opcion input{
-margin-right:10px;
+    margin-right:10px;
+    transform:scale(1.2);
 }
 
-/* BOTONES */
+/* ==========================
+   BOTONES
+========================== */
 
 button{
-width:100%;
-background:#003B7A;
-color:white;
-border:none;
-padding:15px;
-border-radius:12px;
-cursor:pointer;
-font-size:1rem;
-font-weight:600;
-transition:.3s;
+    background:#003B7A;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
 }
 
-button:hover
+button:hover{
+    background:#00295a;
+}
 
 .btn-finalizar{
-background:#28a745;
+    background:#28a745;
 }
 
-.btn-finalizar:hover
+.btn-finalizar:hover{
+    background:#218838;
+}
 
-/* RESULTADO */
+/* ==========================
+   RESULTADO
+========================== */
 
 #resultado{
-margin-top:20px;
-font-size:1.1rem;
-font-weight:bold;
+    margin-top:25px;
+    font-size:20px;
+    font-weight:bold;
 }
 
-/* BARRA PROGRESO */
+/* ==========================
+   PROGRESO
+========================== */
 
 .progreso{
-margin-bottom:20px;
+    margin-bottom:30px;
 }
 
 .barra{
-width:100%;
-height:12px;
-background:#ddd;
-border-radius:50px;
-overflow:hidden;
+    width:100%;
+    height:14px;
+    background:#e5e5e5;
+    border-radius:30px;
+    overflow:hidden;
 }
 
 .barra span{
-display:block;
-height:100%;
-width:20%;
-background:#003B7A;
+    display:block;
+    height:100%;
+    width:20%;
+    background:#003B7A;
 }
 
-/* TIMER */
+/* ==========================
+   TEMPORIZADOR
+========================== */
 
 .timer{
-display:inline-block;
-background:#fff3cd;
-color:#856404;
-padding:10px 15px;
-border-radius:10px;
-margin-bottom:20px;
-font-weight:bold;
+    background:#fff3cd;
+    color:#856404;
+    padding:12px 18px;
+    border-radius:10px;
+    display:inline-block;
+    margin-bottom:25px;
+    font-weight:700;
 }
 
-/* MÓVILES */
+/* ==========================
+   RESPONSIVE TABLET
+========================== */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
-```
-.navbar{
-    flex-direction:column;
-    text-align:center;
-}
+    .navbar{
+        flex-direction:column;
+        text-align:center;
+        padding:15px;
+    }
 
-.logo{
-    font-size:1.2rem;
-}
+    .logo{
+        font-size:20px;
+    }
 
-.card{
-    border-radius:15px;
-}
+    .container{
+        width:95%;
+    }
 
-.opcion{
-    padding:12px;
-}
-```
+    .card{
+        padding:25px;
+    }
 
-}
+    .card h2{
+        font-size:24px;
+    }
 
-/* TELÉFONOS PEQUEÑOS */
-
-@media (max-width:480px){
-
-```
-html{
-    font-size:14px;
-}
-
-.container{
-    width:98%;
-}
-
-.card{
-    padding:15px;
-}
-```
+    button{
+        width:100%;
+    }
 
 }
 
-/* TABLETS */
+/* ==========================
+   RESPONSIVE CELULAR
+========================== */
 
-@media (min-width:769px) and (max-width:1024px){
+@media(max-width:480px){
 
-```
-.container{
-    width:90%;
-}
-```
+    .navbar{
+        padding:12px;
+    }
 
-}
+    .container{
+        width:98%;
+        margin:20px auto;
+    }
 
-/* MONITORES GRANDES */
+    .card{
+        padding:18px;
+        border-radius:15px;
+    }
 
-@media (min-width:1600px){
+    .opcion{
+        padding:14px;
+        font-size:14px;
+    }
 
-```
-.container{
-    max-width:1200px;
-}
-```
+    .timer{
+        width:100%;
+        text-align:center;
+    }
+
+    #resultado{
+        font-size:18px;
+        text-align:center;
+    }
 
 }

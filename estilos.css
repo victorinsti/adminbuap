@@ -1,3 +1,4 @@
+
 /* ==========================
    RESET
 ========================== */
@@ -63,19 +64,9 @@ header .container{
     font-weight:800;
 }
 
-@media(max-width:900px){
-
-    nav ul{
-        gap:15px;
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    header .container{
-        flex-direction:column;
-        gap:15px;
-    }
-
+nav ul{
+    display:flex;
+    gap:30px;
 }
 
 nav a{
@@ -484,8 +475,26 @@ footer p{
 
 @media(max-width:900px){
 
+    header .container{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        display:block;
+        width:100%;
+    }
+
+    nav ul{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
     .nav-buttons{
-        display:none;
+        display:flex;
+        gap:10px;
     }
 
 }

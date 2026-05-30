@@ -1,3 +1,4 @@
+
 *{
     margin:0;
     padding:0;
@@ -94,8 +95,3 @@ button:hover{
     background:#002b58;
 }
 
-#mensaje{
-    margin-top:15px;
-    text-align:center;
-    font-weight:bold;
-}

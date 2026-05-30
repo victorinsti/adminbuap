@@ -16,13 +16,12 @@
 
 <nav class="navbar">
 
-
 <div class="logo">
-    ADMIN BUAP
+ADMIN BUAP
 </div>
 
 <a href="dashboard.html">
-    Volver
+Volver
 </a>
 
 </nav>
@@ -31,43 +30,23 @@
 
 <div class="card">
 
-    <div class="materia">
-        Matemáticas
-    </div>
+<div class="materia">
+Matemáticas
+</div>
 
-    <div class="contador">
-        Pregunta 1 de 50
-    </div>
+<div class="contador">
+Pregunta <span id="numeroPregunta">1</span> de <span id="totalPreguntas">10</span>
+</div>
 
-    <h2>
-        ¿Cuánto es 15 × 8?
-    </h2>
+<h2 id="pregunta"></h2>
 
-    <div class="opcion">
-        <input type="radio" name="respuesta" value="100">
-        100
-    </div>
+<div id="opciones"></div>
 
-    <div class="opcion">
-        <input type="radio" name="respuesta" value="120">
-        120
-    </div>
+<button onclick="siguientePregunta()">
+Siguiente
+</button>
 
-    <div class="opcion">
-        <input type="radio" name="respuesta" value="140">
-        140
-    </div>
-
-    <div class="opcion">
-        <input type="radio" name="respuesta" value="150">
-        150
-    </div>
-
-    <button onclick="evaluar()">
-        Responder
-    </button>
-
-    <p id="resultado"></p>
+<p id="resultado"></p>
 
 </div>
 
@@ -75,7 +54,168 @@
 
 <script>
 
-function evaluar(){
+const preguntas = [
+
+{
+pregunta:"¿Cuánto es 15 × 8?",
+opciones:["100","120","140","150"],
+correcta:"120"
+},
+
+{
+pregunta:"¿Cuál es la raíz cuadrada de 144?",
+opciones:["10","11","12","13"],
+correcta:"12"
+},
+
+{
+pregunta:"Resuelve: 3x + 5 = 20",
+opciones:["3","4","5","6"],
+correcta:"5"
+},
+
+{
+pregunta:"¿Cuánto es el 25% de 200?",
+opciones:["25","50","75","100"],
+correcta:"50"
+},
+
+{
+pregunta:"¿Cuál es el área de un cuadrado de lado 9?",
+opciones:["18","36","72","81"],
+correcta:"81"
+},
+
+{
+pregunta:"¿Cuánto es 12²?",
+opciones:["122","124","144","164"],
+correcta:"144"
+},
+
+{
+pregunta:"¿Cuál es la mitad de 350?",
+opciones:["150","160","175","180"],
+correcta:"175"
+},
+
+{
+pregunta:"¿Cuánto es 7 × 14?",
+opciones:["84","98","108","112"],
+correcta:"98"
+},
+
+{
+pregunta:"¿Cuál es la raíz cuadrada de 225?",
+opciones:["10","12","15","20"],
+correcta:"15"
+},
+
+{
+pregunta:"¿Cuánto es 18 + 27?",
+opciones:["35","45","55","65"],
+correcta:"45"
+},
+
+{
+pregunta:"¿Cuál es el perímetro de un cuadrado de lado 6?",
+opciones:["12","18","24","36"],
+correcta:"24"
+},
+
+{
+pregunta:"¿Cuánto es 40% de 150?",
+opciones:["50","60","70","80"],
+correcta:"60"
+},
+
+{
+pregunta:"¿Cuál es el resultado de 5³?",
+opciones:["25","75","125","225"],
+correcta:"125"
+},
+
+{
+pregunta:"¿Cuánto es 90 ÷ 15?",
+opciones:["5","6","7","8"],
+correcta:"6"
+},
+
+{
+pregunta:"¿Cuál es la suma de los ángulos internos de un triángulo?",
+opciones:["90","180","270","360"],
+correcta:"180"
+},
+
+{
+pregunta:"¿Cuánto es 16 × 16?",
+opciones:["246","256","266","276"],
+correcta:"256"
+},
+
+{
+pregunta:"¿Cuál es el valor de π aproximado?",
+opciones:["2.14","3.14","4.14","5.14"],
+correcta:"3.14"
+},
+
+{
+pregunta:"¿Cuánto es 1000 × 0.5?",
+opciones:["50","100","500","1000"],
+correcta:"500"
+},
+
+{
+pregunta:"¿Cuál es el MCD de 12 y 18?",
+opciones:["3","6","9","12"],
+correcta:"6"
+},
+
+{
+pregunta:"¿Cuánto es 8²?",
+opciones:["56","64","72","80"],
+correcta:"64"
+}
+
+];
+
+
+let actual = 0;
+let aciertos = 0;
+
+document.getElementById("totalPreguntas").textContent =
+preguntas.length;
+
+function cargarPregunta(){
+
+document.getElementById("numeroPregunta").textContent =
+actual + 1;
+
+document.getElementById("pregunta").textContent =
+preguntas[actual].pregunta;
+
+let html = "";
+
+preguntas[actual].opciones.forEach(opcion=>{
+
+html += `
+<div class="opcion">
+<label>
+<input
+type="radio"
+name="respuesta"
+value="${opcion}">
+${opcion}
+</label>
+</div>
+`;
+
+});
+
+document.getElementById("opciones").innerHTML = html;
+
+}
+
+function siguientePregunta(){
 
 let seleccion =
 document.querySelector(
@@ -84,29 +224,61 @@ document.querySelector(
 
 if(!seleccion){
 
-alert("Selecciona una opción");
+alert("Selecciona una respuesta");
 
 return;
 
 }
 
-if(seleccion.value=="120"){
+if(
+seleccion.value ===
+preguntas[actual].correcta
+){
 
-document.getElementById(
-"resultado"
-).innerHTML=
-"✅ Correcto";
+aciertos++;
+
+}
+
+actual++;
+
+if(actual < preguntas.length){
+
+cargarPregunta();
 
 }else{
 
-document.getElementById(
-"resultado"
-).innerHTML=
-"❌ Incorrecto";
+let porcentaje =
+Math.round(
+(aciertos / preguntas.length) * 100
+);
+
+document.querySelector(".card").innerHTML = `
+
+<div class="materia">
+Resultado Final
+</div>
+
+<h1>${aciertos}/${preguntas.length}</h1>
+
+<h2>${porcentaje}%</h2>
+
+<p>
+Has terminado el simulador.
+</p>
+
+<a
+href="simulador-matematicas.html"
+class="btn-finalizar">
+Intentar nuevamente
+</a>
+
+`;
 
 }
 
 }
+
+cargarPregunta();
 
 </script>
 
