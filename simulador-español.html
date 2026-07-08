@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Simulador Español | ADMIN BUAP</title>
+
+<link rel="stylesheet" href="simulador.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+ADMIN BUAP
+</div>
+
+<a href="dashboard.html">
+Volver
+</a>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<div class="materia">
+Español
+</div>
+
+<div class="contador">
+Pregunta <span id="numeroPregunta">1</span> de <span id="totalPreguntas">50</span>
+</div>
+
+<h2 id="pregunta"></h2>
+
+<div id="opciones"></div>
+
+<button onclick="siguientePregunta()">
+Siguiente
+</button>
+
+<p id="resultado"></p>
+
+</div>
+
+</div>
+
+<script>
+
+    const preguntas = [
+    {
+  pregunta: "Lee el siguiente texto:\n\nLa lectura frecuente fortalece la comprensión, amplía el vocabulario y favorece el pensamiento crítico.\n\n¿Cuál es la idea principal del texto?",
+  opciones: [
+    "La lectura aumenta únicamente el vocabulario.",
+    "La lectura desarrolla diversas habilidades intelectuales.",
+    "Todas las personas comprenden lo que leen.",
+    "El pensamiento crítico depende únicamente de la memoria."
+  ],
+  correcta: "La lectura desarrolla diversas habilidades intelectuales."
+},
+{
+  pregunta: "Selecciona la palabra escrita correctamente.",
+  opciones: [
+    "Conclución",
+    "Conclusión",
+    "Concluzión",
+    "Conclucion"
+  ],
+  correcta: "Conclusión"
+},
+{
+  pregunta: "¿Cuál es el sinónimo de 'eficiente'?",
+  opciones: [
+    "Inútil",
+    "Capaz",
+    "Lento",
+    "Débil"
+  ],
+  correcta: "Capaz"
+},
+{
+  pregunta: "Completa la oración:\n\nLos estudiantes estudiaron intensamente, ______ obtuvieron excelentes resultados.",
+  opciones: [
+    "sin embargo",
+    "por lo tanto",
+    "aunque",
+    "mientras"
+  ],
+  correcta: "por lo tanto"
+},
+{
+  pregunta: "¿Cuál es el antónimo de 'escaso'?",
+  opciones: [
+    "Poco",
+    "Abundante",
+    "Limitado",
+    "Reducido"
+  ],
+  correcta: "Abundante"
+},
+{
+  pregunta: "¿En cuál oración se utiliza correctamente la coma?",
+  opciones: [
+    "María compró pan leche y queso.",
+    "María compró pan, leche y queso.",
+    "María, compró pan leche y queso.",
+    "María compró, pan leche y queso."
+  ],
+  correcta: "María compró pan, leche y queso."
+},
+{
+  pregunta: "Selecciona la oración escrita correctamente.",
+  opciones: [
+    "Habían muchas personas en el evento.",
+    "Había muchas personas en el evento.",
+    "Habían mucha personas en el evento.",
+    "Había muchas persona en el evento."
+  ],
+  correcta: "Había muchas personas en el evento."
+},
+{
+  pregunta: "¿Cuál es el significado de la palabra 'íntegro'?",
+  opciones: [
+    "Desordenado",
+    "Honesto y completo",
+    "Pequeño",
+    "Indeciso"
+  ],
+  correcta: "Honesto y completo"
+},
+{
+  pregunta: "¿Cuál oración contiene un verbo en tiempo pasado?",
+  opciones: [
+    "Mañana estudiaré matemáticas.",
+    "Ellos juegan fútbol.",
+    "Ayer visitamos el museo.",
+    "Nosotros iremos al cine."
+  ],
+  correcta: "Ayer visitamos el museo."
+},
+{
+  pregunta: "Selecciona la opción con la acentuación correcta.",
+  opciones: [
+    "Arbol",
+    "Árbol",
+    "Arból",
+    "Arból"
+  ],
+  correcta: "Árbol"
+},
+{
+  pregunta: "¿Cuál es la finalidad principal de un texto argumentativo?",
+  opciones: [
+    "Describir un lugar.",
+    "Convencer al lector mediante razones.",
+    "Relatar una historia.",
+    "Dar instrucciones."
+  ],
+  correcta: "Convencer al lector mediante razones."
+},
+{
+  pregunta: "¿Qué palabra está escrita correctamente?",
+  opciones: [
+    "Excepción",
+    "Exepción",
+    "Exepción",
+    "Eccepción"
+  ],
+  correcta: "Excepción"
+},
+{
+  pregunta: "¿Cuál de las siguientes palabras pertenece al mismo campo semántico que 'hospital'?",
+  opciones: [
+    "Médico",
+    "Automóvil",
+    "Montaña",
+    "Pintura"
+  ],
+  correcta: "Médico"
+},
+{
+  pregunta: "¿Qué tipo de texto presenta hechos ordenados cronológicamente?",
+  opciones: [
+    "Argumentativo",
+    "Narrativo",
+    "Expositivo",
+    "Instructivo"
+  ],
+  correcta: "Narrativo"
+},
+{
+  pregunta: "¿Cuál es el antónimo de 'optimista'?",
+  opciones: [
+    "Pesimista",
+    "Feliz",
+    "Amable",
+    "Generoso"
+  ],
+  correcta: "Pesimista"
+},
+{
+  pregunta: "Completa la oración:\n\nEl investigador presentó las pruebas; ______, la hipótesis fue aceptada.",
+  opciones: [
+    "además",
+    "por consiguiente",
+    "aunque",
+    "mientras"
+  ],
+  correcta: "por consiguiente"
+},
+{
+  pregunta: "¿Cuál oración tiene sujeto tácito?",
+  opciones: [
+    "Los alumnos llegaron temprano.",
+    "Compramos los boletos ayer.",
+    "El profesor explicó el tema.",
+    "Mi hermana cocina muy bien."
+  ],
+  correcta: "Compramos los boletos ayer."
+},
+{
+  pregunta: "¿Cuál palabra contiene un hiato?",
+  opciones: [
+    "Tierra",
+    "Ciudad",
+    "Poeta",
+    "Puerta"
+  ],
+  correcta: "Poeta"
+},
+{
+  pregunta: "¿Qué función tiene el punto y coma (;)?",
+  opciones: [
+    "Separar palabras.",
+    "Unir sílabas.",
+    "Separar oraciones relacionadas.",
+    "Indicar una pregunta."
+  ],
+  correcta: "Separar oraciones relacionadas."
+},
+{
+  pregunta: "¿Cuál de las siguientes analogías es correcta?",
+  opciones: [
+    "Libro es a biblioteca como automóvil es a carretera.",
+    "Perro es a ladrar como pez es a volar.",
+    "Sol es a noche como luna es a día.",
+    "Maestro es a escuela como pez es a bosque."
+  ],
+  correcta: "Libro es a biblioteca como automóvil es a carretera."
+}
+,
+{
+pregunta:"Lee el siguiente texto:\n\nEl cuidado del medio ambiente requiere la participación de toda la sociedad mediante acciones como el reciclaje, el ahorro de agua y la reducción del uso de plásticos.\n\n¿Cuál es la idea principal del texto?",
+opciones:[
+"El reciclaje es la única solución para cuidar el planeta.",
+"La protección del medio ambiente depende de diversas acciones de la sociedad.",
+"El uso del agua debe eliminarse por completo.",
+"Los plásticos no representan ningún problema ambiental."
+],
+correcta:"La protección del medio ambiente depende de diversas acciones de la sociedad."
+},
+
+{
+pregunta:"Selecciona la palabra escrita correctamente.",
+opciones:[
+"Perspectiva",
+"Perpectiva",
+"Perspectiba",
+"Perspectiiva"
+],
+correcta:"Perspectiva"
+},
+
+{
+pregunta:"¿Cuál es el sinónimo de 'obstáculo'?",
+opciones:[
+"Impedimento",
+"Camino",
+"Beneficio",
+"Ventaja"
+],
+correcta:"Impedimento"
+},
+
+{
+pregunta:"¿Qué conector completa correctamente la oración?\n\nEl equipo entrenó durante meses; _______, obtuvo el campeonato.",
+opciones:[
+"por ello",
+"sin embargo",
+"aunque",
+"mientras"
+],
+correcta:"por ello"
+},
+
+{
+pregunta:"¿Cuál oración está escrita correctamente?",
+opciones:[
+"Hubieron muchos invitados en la ceremonia.",
+"Hubo muchos invitados en la ceremonia.",
+"Hubieron mucho invitados en la ceremonia.",
+"Hubo mucho invitados en la ceremonia."
+],
+correcta:"Hubo muchos invitados en la ceremonia."
+},
+
+{
+pregunta:"¿Qué tipo de texto tiene como propósito explicar un tema de forma objetiva?",
+opciones:[
+"Poético",
+"Narrativo",
+"Expositivo",
+"Dramático"
+],
+correcta:"Expositivo"
+},
+
+{
+pregunta:"Selecciona la palabra que contiene un diptongo.",
+opciones:[
+"Poeta",
+"Caída",
+"Ciudad",
+"Baúl"
+],
+correcta:"Ciudad"
+},
+
+{
+pregunta:"¿Cuál es el antónimo de 'superficial'?",
+opciones:[
+"Profundo",
+"Amplio",
+"Visible",
+"Simple"
+],
+correcta:"Profundo"
+},
+
+{
+pregunta:"¿Cuál de las siguientes analogías es correcta?",
+opciones:[
+"Pluma es a escribir como pincel es a pintar.",
+"Doctor es a hospital como pez es a árbol.",
+"Automóvil es a carretera como avión es a río.",
+"Lluvia es a sequía como frío es a calor."
+],
+correcta:"Pluma es a escribir como pincel es a pintar."
+},
+
+{
+pregunta:"¿Cuál opción utiliza correctamente los signos de interrogación?",
+opciones:[
+"¿Dónde estudias.",
+"Dónde estudias?",
+"¿Dónde estudias?",
+"Donde estudias?"
+],
+correcta:"¿Dónde estudias?"
+},
+{
+pregunta:"Lee el siguiente texto:\n\nLa educación fomenta el desarrollo de habilidades, valores y conocimientos que permiten a las personas enfrentar los retos de la vida cotidiana.\n\n¿Cuál es la idea principal del texto?",
+opciones:[
+"La educación solo sirve para obtener un empleo.",
+"La educación contribuye al desarrollo integral de las personas.",
+"Los conocimientos son más importantes que los valores.",
+"La educación únicamente se recibe en la escuela."
+],
+correcta:"La educación contribuye al desarrollo integral de las personas."
+},
+
+{
+pregunta:"Selecciona la palabra escrita correctamente.",
+opciones:[
+"Privilegio",
+"Pribilegio",
+"Privilejio",
+"Pribilejio"
+],
+correcta:"Privilegio"
+},
+
+{
+pregunta:"¿Cuál es el sinónimo de 'inevitable'?",
+opciones:[
+"Posible",
+"Ineludible",
+"Eventual",
+"Dudoso"
+],
+correcta:"Ineludible"
+},
+
+{
+pregunta:"Completa correctamente la oración.\n\nEl proyecto era complejo; ________, lograron concluirlo antes de la fecha establecida.",
+opciones:[
+"sin embargo",
+"por ejemplo",
+"es decir",
+"además"
+],
+correcta:"sin embargo"
+},
+
+{
+pregunta:"¿Cuál oración está escrita correctamente?",
+opciones:[
+"Porque no estudiaste reprobaste.",
+"Porque no estudiaste, reprobaste.",
+"Por que no estudiaste reprobaste.",
+"Porqué no estudiaste, reprobaste."
+],
+correcta:"Porque no estudiaste, reprobaste."
+},
+
+{
+pregunta:"¿Qué tipo de texto busca convencer al lector mediante argumentos?",
+opciones:[
+"Descriptivo",
+"Expositivo",
+"Argumentativo",
+"Narrativo"
+],
+correcta:"Argumentativo"
+},
+
+{
+pregunta:"¿Cuál de las siguientes palabras está acentuada correctamente?",
+opciones:[
+"Exámen",
+"Examen",
+"Exámenes",
+"Examén"
+],
+correcta:"Examen"
+},
+
+{
+pregunta:"¿Cuál es el antónimo de 'optimizar'?",
+opciones:[
+"Mejorar",
+"Empeorar",
+"Facilitar",
+"Incrementar"
+],
+correcta:"Empeorar"
+},
+
+{
+pregunta:"¿Qué relación existe entre 'abeja' y 'colmena'?",
+opciones:[
+"Animal - Lugar donde habita",
+"Objeto - Material",
+"Causa - Efecto",
+"Autor - Obra"
+],
+correcta:"Animal - Lugar donde habita"
+},
+
+{
+pregunta:"¿Cuál oración presenta correctamente el uso de las mayúsculas?",
+opciones:[
+"El próximo lunes visitaré Puebla.",
+"El próximo Lunes visitaré puebla.",
+"El próximo lunes visitaré puebla.",
+"El Próximo lunes visitaré Puebla."
+],
+correcta:"El próximo lunes visitaré Puebla."
+}
+];
+
+let actual = 0;
+let aciertos = 0;
+
+document.getElementById("totalPreguntas").textContent =
+preguntas.length;
+
+function cargarPregunta(){
+
+document.getElementById("numeroPregunta").textContent =
+actual + 1;
+
+document.getElementById("pregunta").textContent =
+preguntas[actual].pregunta;
+
+let html = "";
+
+preguntas[actual].opciones.forEach(opcion=>{
+
+html += `
+<div class="opcion">
+<label>
+<input
+type="radio"
+name="respuesta"
+value="${opcion}">
+${opcion}
+</label>
+</div>
+`;
+
+});
+
+document.getElementById("opciones").innerHTML = html;
+
+}
+
+function siguientePregunta(){
+
+let seleccion =
+document.querySelector(
+'input[name="respuesta"]:checked'
+);
+
+if(!seleccion){
+
+alert("Selecciona una respuesta");
+
+return;
+
+}
+
+if(
+seleccion.value ===
+preguntas[actual].correcta
+){
+
+aciertos++;
+
+}
+
+actual++;
+
+if(actual < preguntas.length){
+
+cargarPregunta();
+
+}else{
+
+let porcentaje =
+Math.round(
+(aciertos / preguntas.length) * 100
+);
+
+document.querySelector(".card").innerHTML = `
+
+<div class="materia">
+Resultado Final
+</div>
+
+<h1>${aciertos}/${preguntas.length}</h1>
+
+<h2>${porcentaje}%</h2>
+
+<p>
+Has terminado el simulador.
+</p>
+
+<a
+href="simulador-matematicas.html"
+class="btn-finalizar">
+Intentar nuevamente
+</a>
+
+`;
+
+}
+
+}
+
+cargarPregunta();
+
+</script>
+
+</body>
+</html>
